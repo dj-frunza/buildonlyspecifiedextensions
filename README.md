@@ -9,7 +9,7 @@
 							
 6. Add the full content of the following file into your local platform\resources\ant\antmacros.xml
 
-		 buildonlyspecifiedextensions/resources/ant/declareNewAntTasks.xml (This file can be found in this repo)
+		 resources/ant/declareNewAntTasks.xml (This file can be found in this repo)
 	
 7. Create "djfrunzatasks.properties" file in "hybris\bin\platform\bootstrap\resources\" and put in there the following:
 
