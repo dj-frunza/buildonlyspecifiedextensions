@@ -1,0 +1,21 @@
+ <!-- Dj Frunza Custom -->
+ 	<taskdef file="${platformhome}/bootstrap/resources/djfrunzatasks.properties">
+ 		<classpath>
+ 			<pathelement path="${platformhome}/bootstrap/bin/ybootstrap.jar" />
+ 			<pathelement path="${platformhome}/bootstrap/bin/BuildOnlySpecifiedExtensions.jar" />
+ 			<pathelement path="${platformhome}/bootstrap/bin/yant.jar" />
+ 			<fileset dir="${platformhome}/lib/dbdriver">
+ 				<include name="*.jar" />
+ 			</fileset>
+ 			<fileset dir="${platformhome}/ext/core/lib">
+ 				<include name="**/*.jar" />
+ 			</fileset>
+ 			<fileset dir="${platformhome}/lib">
+ 				<include name="*.jar" />
+ 			</fileset>
+ 			<fileset dir="${bundled.tomcat.home}/lib">
+ 				<include name="*.jar" />
+ 			</fileset>
+ 		</classpath>
+ 	</taskdef>
+ <!-- Dj Frunza Custom -->

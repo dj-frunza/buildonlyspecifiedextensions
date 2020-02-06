@@ -1,0 +1,90 @@
+ <macrodef name="propertycopy">
+   <attribute name="name"/>
+   <attribute name="from"/>
+   <attribute name="prefix"/>
+   <attribute name="suffix"/>
+   <sequential>
+ 	<property name="@{name}" value="${@{prefix}@{from}@{suffix}}"/>
+   </sequential>
+ </macrodef>
+ 
+ <propertycopy name="provided.extension.path" from="${extensions.to.generate.models.for}" prefix="ext." suffix=".path" />
+ <propertycopy name="provided.extension.classpath" from="${extensions.to.generate.models.for}" prefix="ext." suffix=".classpath" />
+
+ 
+ <path id="new-type-compile-classpath">
+   <fileset dir="${platformhome}/bootstrap/bin">
+ 	<include name="ybootstrap.jar"/>
+   </fileset>
+
+   <pathelement path="${provided.extension.classpath}"/>
+   
+   <pathelement path="${ext.validation.classpath}"/>
+   <pathelement path="${build.classpath}" />
+ </path>
+
+ <target name="generateAndCompileNewType" description="Builds the provided extensions">
+ 	<!-- Validate that the needed properties were provided  --> 
+ 	<fail message="Property &quot;type.to.compile&quot; needs to be set to a value. Its value should be taken from jaloClass Attribute from items.xml. EX: com.training.hybris.core.jalo.cms.CustomCmsComponent">
+ 		<condition>
+ 			<or>
+ 				<equals arg1="${type.to.compile}" arg2=""/>
+ 				<not>
+ 					<isset property="type.to.compile"/>
+ 				</not>
+ 		   </or>
+ 	   </condition>
+ 	</fail>
+ 	
+ 	<fail message="Property &quot;extensions.to.generate.models.for&quot; needs to be set to a value">
+ 		<condition>
+ 			<or>
+ 				<equals arg1="${extensions.to.generate.models.for}" arg2=""/>
+ 				<not>
+ 					<isset property="extensions.to.generate.models.for"/>
+ 				</not>
+ 		   </or>
+ 	   </condition>
+ 	</fail>
+ 	
+ 	<!-- Generate model and Jalo java files based on the provided extension's items.xml file --> 
+ 	<codegeneratorforspecifiedextensions/>		 
+
+ 	<propertyregex property="type.to.compile.jalo"
+ 		   input="${type.to.compile}"
+ 		   regexp="\."
+ 		   replace="/"
+ 		   global="true" />
+ 		   
+ 	<propertyregex property="type.to.compile.model"
+ 		   input="${type.to.compile.jalo}"
+ 		   regexp="jalo"
+ 		   replace="model"
+ 		   global="true" />
+ 	<!-- Bellow code replaces the last occurence of "/" character with "/Generated" in order to obtain the generated class file's path.
+ 				EX: com/training/hybris/core/jalo/cms/CustomCmsComponent -> com/training/hybris/core/jalo/cms/GeneratedCustomCmsComponent    -->	   
+ 	<propertyregex property="type.to.compile.generated"
+ 		   input="${type.to.compile.jalo}"
+ 		   regexp="\/(?!.*\/)"
+ 		   replace="/Generated"
+ 		   global="true" />
+
+ 	<!-- Compile the generated model class: (e.g CustomCmsComponentModel.java) -->
+ 	<javac srcdir="${platformhome}/bootstrap/gensrc" destdir="${platformhome}/bootstrap/modelclasses"  compiler="modern" >
+ 			<filename name="${type.to.compile.model}Model.java" />
+ 			<classpath refid="new-type-compile-classpath"/>
+ 	</javac>
+ 	
+ 	<!-- Compile the generated jalo class: (e.g GeneratedCustomCmsComponent.java) -->
+ 	<javac srcdir="${provided.extension.path}/gensrc" destdir="${provided.extension.path}/classes"  compiler="modern" >
+ 			<filename name="${type.to.compile.generated}.java" />
+ 			<classpath refid="new-type-compile-classpath"/>
+ 	</javac>
+ 	
+ 	<!-- Compile the generated jalo class: (e.g CustomCmsComponent.java) -->
+ 	<javac srcdir="${provided.extension.path}/src" destdir="${provided.extension.path}/classes"  compiler="modern" >
+ 			<filename name="${type.to.compile.jalo}.java" />
+ 			<classpath refid="new-type-compile-classpath"/>
+ 	</javac>
+ 	
+ </target>
