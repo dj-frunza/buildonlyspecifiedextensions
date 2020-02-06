@@ -1,0 +1,11 @@
+# Compiled classes #
+out
+
+# IntelliJ files #
+*.iml
+*.idea
+
+# Local resources #
+**.classpath
+**.project
+**.settings**
