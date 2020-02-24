@@ -20,6 +20,10 @@
 5. Example of command: 
 
 		ant generateAndCompileNewType -Dextensions.to.generate.models.for="projectnamecore" -Dtype.to.compile="com.training.hybris.core.jalo.cms.CustomCmsComponent"
+
+
+		
+Disclaimer: This project is intended to be used only during development. Hybris standard ant targets are not touched and not affected. 
 		
 
         
