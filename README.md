@@ -23,7 +23,7 @@
 
 
 		
-Disclaimer: This project is intended to be used only during development. Hybris standard ant targets are not touched and not affected. 
+This project is intended to be used only during development. Hybris standard ant targets are not touched and not affected. 
 		
 
         
