@@ -2,7 +2,7 @@
 	to be added in the classpath of this project as well. Example of such a class: de.hybris.bootstrap.codegenerator.CodeGenerator --> If you just need to use this project without doing development,
     you can do that directly by using the jar that can be found in the 'artifact' folder.
 2. Take the jar directly from the 'artifact' directory or build the jar using Intellij: https://www.jetbrains.com/help/idea/packaging-a-module-into-a-jar-file.html 
-3. Put the jar in hybris\bin\platform\bootstrap\bin\ so that ant will know where to get it from. The name of the jar should be BuildOnlySpecifiedExtensions.jar.
+3. Put the jar into your local hybris\bin\platform\bootstrap\bin\ so that ant will know where to get it from. The name of the jar should be BuildOnlySpecifiedExtensions.jar.
 4. Modify ant in the following way:
 5. Add the full content of the following file into your local platform/build.xml
 
