@@ -21,7 +21,7 @@ import java.util.*;
  * This class is intended to do almost exactly what {@link de.hybris.bootstrap.codegenerator.model.ModelClassGenerator} is doing, which is generating Model Classes.
  * The main two big differences are that:
  * <ul>
- *     <li>This class is not deleting models.jar in order to increase the build performance and to avoid the need for hybris restart</li>
+ *     <li>models.jar is not deleted in order to increase the build performance and to avoid the need for hybris restart</li>
  *     <li>The Models are generated only for the extensions that are specified via {@link #EXTENSIONS_TO_BUILD} ant property</li>
  * </ul>
  *
