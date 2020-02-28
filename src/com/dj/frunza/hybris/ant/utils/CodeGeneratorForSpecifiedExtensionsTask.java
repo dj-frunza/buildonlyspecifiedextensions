@@ -26,7 +26,7 @@ import java.util.*;
  * </ul>
  *
  * <p>
- * If the dev has a JRebel  subscription activated, he/she can reload the new classes into the JVM.
+ * If the dev uses JRebel , he/she can reload the new classes into the JVM.
  */
 public class CodeGeneratorForSpecifiedExtensionsTask extends Task {
     private static final Logger LOG = Logger.getLogger(CodeGeneratorForSpecifiedExtensionsTask.class);
