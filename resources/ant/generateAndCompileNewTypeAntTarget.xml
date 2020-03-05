@@ -32,6 +32,9 @@
  				<not>
  					<isset property="type.to.compile"/>
  				</not>
+                <not>
+					<contains string="${type.to.compile}" substring="."/>
+			    </not>
  		   </or>
  	   </condition>
  	</fail>
