@@ -24,6 +24,8 @@
 
 		
 This project is intended to be used only during development. Hybris standard ant targets are not touched and not affected. 
+
+Description Video: https://www.youtube.com/watch?v=NHtMg8vZfdI&feature=youtu.be
 		
 
         
