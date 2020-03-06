@@ -1,4 +1,4 @@
-1. In Order to be able to get rid of Intellij errors, the classes that are used in this project should be searched in the associated Hybris project and then the jars containing them need
+1. In Order to be able to get rid of Intellij errors, the classes that are used in this project should be searched in the associated local Hybris project and then the jars containing them need
 	to be added in the classpath of this project as well. Example of such a class: de.hybris.bootstrap.codegenerator.CodeGenerator --> If you just need to use this project without doing development,
     you can do that directly by using the jar that can be found in the 'artifact' folder.
 2. Take the jar directly from the 'artifact' directory or build the jar using Intellij: https://www.jetbrains.com/help/idea/packaging-a-module-into-a-jar-file.html 
